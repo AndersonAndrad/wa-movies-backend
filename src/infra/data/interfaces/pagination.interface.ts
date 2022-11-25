@@ -1,4 +1,4 @@
 export interface IPaginatedResponse<item> {
-  items: item[];
-  totalCount: number;
+  items: item[]
+  totalCount: number
 }

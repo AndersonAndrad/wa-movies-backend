@@ -1,22 +1,30 @@
-import { Body, Controller, Get, Param, Post, Query } from '@nestjs/common';
-import { ApiOperation, ApiTags } from '@nestjs/swagger';
-import { MovieDTO } from './dto/create-movie.dto';
-import { SearchMovieDTO } from './dto/search-movie.dto';
+import { Body, Controller, Get, Param, Post, Query } from '@nestjs/common'
+import { ApiOperation, ApiTags } from '@nestjs/swagger'
+import { MovieDTO } from './dto/create-movie.dto'
+import { SearchMovieDTO } from './dto/search-movie.dto'
 
-@ApiTags('Movies')
-@Controller('Movies')
+@ApiTags( 'Movies' )
+@Controller( 'Movies' )
 export class MoviesController {
-  constructor() {}
+  constructor () {}
 
   @Get()
-  @ApiOperation({ summary: 'endpoint description' })
-  search(@Query() filter: SearchMovieDTO) {}
+  @ApiOperation( { summary: 'endpoint description' } )
+  search ( @Query() filter: SearchMovieDTO ) {
+    throw new Error( 'Method not implemented.' )
 
-  @Get('/:movieId')
-  @ApiOperation({ summary: 'endpoint description' })
-  getMovie(@Param('movieId') movieId: string) {}
+  }
+
+  @Get( '/:movieId' )
+  @ApiOperation( { summary: 'endpoint description' } )
+  getMovie ( @Param( 'movieId' ) movieId: string ) {
+    throw new Error( 'Method not implemented.' )
+
+  }
 
   @Post()
-  @ApiOperation({ summary: 'endpoint description' })
-  create(@Body() movie: MovieDTO) {}
+  @ApiOperation( { summary: 'endpoint description' } )
+  create ( @Body() movie: MovieDTO ) {
+    throw new Error( 'Method not implemented.' )
+  }
 }

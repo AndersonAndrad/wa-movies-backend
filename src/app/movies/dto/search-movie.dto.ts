@@ -1,13 +1,13 @@
-import { ApiProperty } from '@nestjs/swagger';
-import { IFilterMovie } from 'src/infra/data/interfaces/movie.interface';
+import { ApiProperty } from '@nestjs/swagger'
+import { IFilterMovie } from 'src/infra/data/interfaces/movie.interface'
 
 export class SearchMovieDTO implements IFilterMovie {
   @ApiProperty()
-  title: string;
+  title: string
 
   @ApiProperty()
-  director: string;
+  director: string
 
   @ApiProperty()
-  producer: string;
+  producer: string
 }

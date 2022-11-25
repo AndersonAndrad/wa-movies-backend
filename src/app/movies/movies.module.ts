@@ -1,11 +1,11 @@
-import { Global, Module } from '@nestjs/common';
+import { Global, Module } from '@nestjs/common'
 
-import { MovieService } from './movies.service';
-import { MoviesController } from './movies.controller';
+import { MovieService } from './movies.service'
+import { MoviesController } from './movies.controller'
 
-Global();
-@Module({
+Global()
+@Module( {
   controllers: [MoviesController],
-  exports: [MovieService],
-})
+  exports: [MovieService]
+} )
 export class MovieModule {}
