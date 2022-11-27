@@ -17,4 +17,4 @@ export interface IFilterMovie {
   producer: string
 }
 
-export interface ICreateMovie {}
+export type ICreateMovie = Omit<IMovie, 'id'>
