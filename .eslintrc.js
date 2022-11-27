@@ -21,7 +21,7 @@ module.exports = {
     semi: ['error', 'never'],
     'max-len': ['error', { code: 100 }],
     eqeqeq: ['error', 'always'],
-    'no-console': ['error', { allow: ['warn', 'error'] }],
+    'no-console': ['warn', { allow: ['warn', 'error'] }],
     'no-duplicate-imports': ['error', { includeExports: true }],
     'no-unused-expressions': [
       'warn',
