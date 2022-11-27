@@ -1,14 +1,11 @@
 export interface IMovie {
-  id: string
+  _id: string
   title: string
-  original_title: string
-  original_title_romanised: string
   description: string
   director: string
   producer: string
-  release_date: string
-  running_time: string
-  rt_score: string
+  image: string
+  movie_banner: string
 }
 
 export interface IFilterMovie {
@@ -17,4 +14,6 @@ export interface IFilterMovie {
   producer: string
 }
 
-export type ICreateMovie = Omit<IMovie, 'id'>
+export type ICreateMovie = Omit<IMovie, '_id'>
+
+export type IMovieSchema = ICreateMovie
