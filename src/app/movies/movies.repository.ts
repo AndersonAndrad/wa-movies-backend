@@ -1,4 +1,8 @@
-import { IFilterMovie, IMovie } from 'src/infra/data/interfaces/movie.interface'
+import {
+  ICreateMovie,
+  IFilterMovie,
+  IMovie
+} from 'src/infra/data/interfaces/movie.interface'
 
 import { IPaginatedResponse } from 'src/infra/data/interfaces/pagination.interface'
 import { Movie } from 'src/infra/data/schemas/movie.schema'
@@ -14,7 +18,7 @@ export interface IMoviesRepository {
    * Create a movie
    * @param movie
    */
-  create(movie: IMovie): Promise<void>
+  create(movie: ICreateMovie): Promise<void>
 
   /**
    * Return only one movie

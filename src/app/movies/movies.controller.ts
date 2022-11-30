@@ -18,12 +18,12 @@ export class MoviesController {
   @Get('/:movieId')
   @ApiOperation({ summary: 'endpoint description' })
   getMovie(@Param('movieId') movieId: string) {
-    this.movieService.getMovie(movieId)
+    return this.movieService.getMovie(movieId)
   }
 
   @Post()
   @ApiOperation({ summary: 'endpoint description' })
   create(@Body() movie: MovieDTO) {
-    throw new Error('Method not implemented.')
+    this.movieService.create(movie)
   }
 }

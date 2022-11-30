@@ -1,4 +1,8 @@
-import { IFilterMovie, IMovie } from '../interfaces/movie.interface'
+import {
+  ICreateMovie,
+  IFilterMovie,
+  IMovie
+} from '../interfaces/movie.interface'
 
 import { InjectModel } from '@nestjs/mongoose'
 import { Model } from 'mongoose'
@@ -13,8 +17,10 @@ export class MoviesRepository implements IMoviesRepository {
     throw new Error('Method not implemented.')
   }
 
-  create(movie: IMovie): Promise<void> {
-    throw new Error('Method not implemented.')
+  create(movie: ICreateMovie): Promise<void> {
+    const createdMovie = new this.movie(movie)
+    createdMovie.save()
+    return
   }
 
   getMovie(movieId: string): Promise<Movie> {
