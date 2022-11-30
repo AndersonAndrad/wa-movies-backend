@@ -22,7 +22,13 @@ export class MovieService {
     return await this.movieRepository.getMovie(movieId)
   }
 
-  public async create(movie: ICreateMovie) {
-    await this.movieRepository.create(movie)
+  public async create({ title, ...movie }: ICreateMovie) {
+    /* format name to remove white spaces to use the name so as not to duplicate movies */
+    const formattedMovie: ICreateMovie = {
+      title: title.toLowerCase().trim(),
+      ...movie
+    }
+
+    await this.movieRepository.create(formattedMovie)
   }
 }
