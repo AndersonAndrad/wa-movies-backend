@@ -8,20 +8,31 @@ import { Movie } from 'src/infra/data/schemas/movie.schema'
 
 export interface IMoviesRepository {
   /**
-   * Get all movies with pagination
+   * Get movies with pagination
    * @return Promise<any>
    */
   search(filterMovie: IFilterMovie): Promise<IPaginatedResponse<Movie>>
 
   /**
-   * Create a movie
+   * Create only one movie
    * @param movie
    */
   create(movie: ICreateMovie): Promise<void>
+
+  /**
+   * Create multiple movies at the same time
+   * @param movies
+   */
+  createMultipleMovies(movies: ICreateMovie[]): Promise<void>
 
   /**
    * Return only one movie
    * @param movieId
    */
   getMovie(movieId: string): Promise<Movie>
+
+  /**
+   * Get number of movies that are in the DB
+   */
+  getQuantityMovies(): Promise<number>
 }

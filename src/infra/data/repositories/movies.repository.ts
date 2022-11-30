@@ -62,7 +62,21 @@ export class MoviesRepository implements IMoviesRepository {
     return
   }
 
+  async createMultipleMovies(movies: ICreateMovie[]): Promise<void> {
+    for (const { title, ...movie } of movies) {
+      await this.movie.updateOne(
+        { title: title.toLocaleLowerCase().trim() },
+        { title: title.toLocaleLowerCase().trim(), ...movie },
+        { upsert: true, setDefaultsOnInsert: true }
+      )
+    }
+  }
+
   getMovie(movieId: string): Promise<Movie> {
     return this.movie.findOne({ _id: movieId }).exec()
+  }
+
+  async getQuantityMovies(): Promise<number> {
+    return await this.movie.countDocuments().where()
   }
 }

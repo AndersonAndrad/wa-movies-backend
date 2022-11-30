@@ -11,9 +11,9 @@ export interface IMovie {
 }
 
 export interface IFilterMovie extends IPaginateFilter {
-  title: string
-  director: string
-  producer: string
+  title?: string
+  director?: string
+  producer?: string
 }
 
 export type ICreateMovie = Omit<IMovie, '_id'>
