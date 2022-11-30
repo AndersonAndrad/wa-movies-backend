@@ -1,7 +1,6 @@
 import {
   ICreateMovie,
-  IFilterMovie,
-  IMovie
+  IFilterMovie
 } from 'src/infra/data/interfaces/movie.interface'
 
 import { IPaginatedResponse } from 'src/infra/data/interfaces/pagination.interface'
@@ -12,7 +11,7 @@ export interface IMoviesRepository {
    * Get all movies with pagination
    * @return Promise<any>
    */
-  search(filter: IFilterMovie): Promise<IPaginatedResponse<IMovie>>
+  search(filterMovie: IFilterMovie): Promise<IPaginatedResponse<Movie>>
 
   /**
    * Create a movie

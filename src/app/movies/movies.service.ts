@@ -1,10 +1,11 @@
-import { ICreateMovie, IMovie } from 'src/infra/data/interfaces/movie.interface'
+import {
+  ICreateMovie,
+  IFilterMovie
+} from 'src/infra/data/interfaces/movie.interface'
 
-import { AxiosResponse } from 'axios'
 import { HttpService } from '@nestjs/axios'
 import { Injectable } from '@nestjs/common'
 import { MoviesRepository } from 'src/infra/data/repositories/movies.repository'
-import { Observable } from 'rxjs'
 
 @Injectable()
 export class MovieService {
@@ -13,12 +14,8 @@ export class MovieService {
     private movieRepository: MoviesRepository
   ) {}
 
-  public async getMovies() {
-    const observableMovie = this.httpService.get<
-      Observable<AxiosResponse<IMovie[]>>
-    >('https://ghibliapi.herokuapp.com/films')
-
-    // observableMovie.subscribe(async ({ data }) => {})
+  public async getMovies(filterMovie: IFilterMovie) {
+    return await this.movieRepository.search(filterMovie)
   }
 
   public async getMovie(movieId: string) {
