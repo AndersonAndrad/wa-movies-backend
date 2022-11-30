@@ -2,11 +2,15 @@ import { AxiosResponse } from 'axios'
 import { HttpService } from '@nestjs/axios'
 import { IMovie } from 'src/infra/data/interfaces/movie.interface'
 import { Injectable } from '@nestjs/common'
+import { MoviesRepository } from 'src/infra/data/repositories/movies.repository'
 import { Observable } from 'rxjs'
 
 @Injectable()
 export class MovieService {
-  constructor(private httpService: HttpService) {}
+  constructor(
+    private httpService: HttpService,
+    private movieRepository: MoviesRepository
+  ) {}
 
   public async getMovies() {
     const observableMovie = this.httpService.get<
@@ -17,6 +21,6 @@ export class MovieService {
   }
 
   public async getMovie(movieId: string) {
-    throw new Error('Method not implemented')
+    this.movieRepository.getMovie(movieId)
   }
 }

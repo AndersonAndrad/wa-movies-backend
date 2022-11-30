@@ -1,31 +1,29 @@
-import * as mongoose from 'mongoose'
+import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose'
 
+import { HydratedDocument } from 'mongoose'
 import { IMovieSchema } from '../interfaces/movie.interface'
 
-export const MovieSchema = new mongoose.Schema<IMovieSchema>(
-  {
-    title: {
-      type: String
-    },
-    description: {
-      type: String
-    },
-    director: {
-      type: String
-    },
-    producer: {
-      type: String
-    },
-    image: {
-      type: String
-    },
-    movie_banner: {
-      type: String
-    }
-  },
-  { timestamps: true }
-)
+export type MovieDocument = HydratedDocument<Movie>
 
-const Movie: mongoose.Model<IMovieSchema> = mongoose.model('movie', MovieSchema)
+@Schema()
+export class Movie implements IMovieSchema {
+  @Prop()
+  title: string
 
-export default Movie
+  @Prop()
+  description: string
+
+  @Prop()
+  director: string
+
+  @Prop()
+  producer: string
+
+  @Prop()
+  image: string
+
+  @Prop()
+  movie_banner: string
+}
+
+export const MovieSchema = SchemaFactory.createForClass(Movie)

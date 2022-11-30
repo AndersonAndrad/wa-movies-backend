@@ -3,20 +3,20 @@ import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger'
 import { AppModule } from './app.module'
 import { NestFactory } from '@nestjs/core'
 
-async function bootstrap () {
-  const app = await NestFactory.create( AppModule )
+async function bootstrap() {
+  const app = await NestFactory.create(AppModule)
 
   const swaggerConfig = new DocumentBuilder()
-    .setTitle( 'Cats Example' )
-    .setDescription( 'This is my description' )
-    .setVersion( '1.0' )
-    .addTag( 'cats' )
+    .setTitle('Cats Example')
+    .setDescription('This is my description')
+    .setVersion('1.0')
+    .addTag('cats')
     .build()
 
-  const swaggerDocument = SwaggerModule.createDocument( app, swaggerConfig )
+  const swaggerDocument = SwaggerModule.createDocument(app, swaggerConfig)
 
-  SwaggerModule.setup( 'api', app, swaggerDocument )
+  SwaggerModule.setup('api', app, swaggerDocument)
 
-  await app.listen( 3000 )
+  await app.listen(3000)
 }
 bootstrap()
