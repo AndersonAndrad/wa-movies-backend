@@ -17,13 +17,13 @@ export interface IMoviesRepository {
    * Create only one movie
    * @param movie
    */
-  create(movie: ICreateMovie): Promise<void>
+  create(movie: ICreateMovie): Promise<Movie>
 
   /**
    * Create multiple movies at the same time
    * @param movies
    */
-  createMultipleMovies(movies: ICreateMovie[]): Promise<void>
+  createMultipleMovies(movies: ICreateMovie[]): Promise<Movie[]>
 
   /**
    * Return only one movie

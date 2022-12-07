@@ -5,7 +5,7 @@ import {
 
 import { HttpService } from '@nestjs/axios'
 import { Injectable } from '@nestjs/common'
-import { MoviesRepository } from 'src/infra/data/repositories/movies.repository'
+import { MoviesRepository } from '../../infra/data/repositories/movies.repository'
 
 @Injectable()
 export class MovieService {
@@ -29,7 +29,7 @@ export class MovieService {
       ...movie
     }
 
-    await this.movieRepository.create(formattedMovie)
+    return await this.movieRepository.create(formattedMovie)
   }
 
   public async createMultipleMovies(totalCount: number) {

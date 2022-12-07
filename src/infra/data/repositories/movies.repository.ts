@@ -56,13 +56,12 @@ export class MoviesRepository implements IMoviesRepository {
     }
   }
 
-  create(movie: ICreateMovie): Promise<void> {
+  async create(movie: ICreateMovie): Promise<Movie> {
     const createdMovie = new this.movie(movie)
-    createdMovie.save()
-    return
+    return createdMovie.save()
   }
 
-  async createMultipleMovies(movies: ICreateMovie[]): Promise<void> {
+  async createMultipleMovies(movies: ICreateMovie[]): Promise<Movie[]> {
     for (const { title, ...movie } of movies) {
       await this.movie.updateOne(
         { title: title.toLocaleLowerCase().trim() },
@@ -70,6 +69,8 @@ export class MoviesRepository implements IMoviesRepository {
         { upsert: true, setDefaultsOnInsert: true }
       )
     }
+
+    return this.movie.find()
   }
 
   getMovie(movieId: string): Promise<Movie> {

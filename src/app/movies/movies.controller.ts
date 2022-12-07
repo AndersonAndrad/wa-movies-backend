@@ -31,6 +31,6 @@ export class MoviesController {
   @Post()
   @ApiOperation({ summary: 'endpoint description' })
   create(@Body() movie: MovieDTO) {
-    this.movieService.create(movie)
+    return this.movieService.create(movie)
   }
 }
