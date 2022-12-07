@@ -10,7 +10,7 @@ import { MoviesController } from '../../app/movies/movies.controller'
 import { RepositoryModule } from '../..//infra/data/repository.module'
 import mongoose from 'mongoose'
 
-describe('Movies repository', () => {
+describe('Movies end to end', () => {
   const mockMovie = {
     title: 'the movie',
     description: 'The description',
@@ -25,7 +25,6 @@ describe('Movies repository', () => {
 
   beforeEach(async () => {
     mongoInMemory = await MongoInMemory.startServer()
-    // jest.setTimeout(100000)
 
     const module: TestingModule = await Test.createTestingModule({
       imports: [
@@ -46,17 +45,17 @@ describe('Movies repository', () => {
     await mongoInMemory.shutdown()
   })
 
-  it('Movie Controller', () => {
+  it('Check if controller has been defined', () => {
     expect(movieController).toBeDefined()
   })
 
-  it('Create', async () => {
+  it('Check is possible create a movie', async () => {
     const movieCreated = await movieController.create(mockMovie)
 
     expect(mockMovie.title).toBe(movieCreated.title)
   })
 
-  it('Search', async () => {
+  it('Check if return pagined movies', async () => {
     const response = await movieController.search({
       pageIndex: 1,
       pageSize: 10,
@@ -68,7 +67,7 @@ describe('Movies repository', () => {
     expect(response).toMatchObject({ items: [], totalCount: 0 })
   })
 
-  it('Get movie', async () => {
+  it('Check if return movie', async () => {
     const createdMovie = (await movieController.create(mockMovie)) as IMovie
 
     const getMovie = (await movieController.getMovie(
@@ -83,5 +82,16 @@ describe('Movies repository', () => {
     const createdMovieId = createdMovie._id.toString()
 
     expect(getMovieId).toBe(createdMovieId)
+  })
+
+  it('Receive the amount of new movies', async () => {
+    const quantityNewMovies = await movieController.veriryNewMovies({
+      totalCount: 2
+    })
+
+    expect(quantityNewMovies).toMatchObject({
+      quantityNewMovies: 0,
+      newQuantity: -2
+    })
   })
 })
