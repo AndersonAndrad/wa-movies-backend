@@ -1,10 +1,10 @@
 import { Global, Module } from '@nestjs/common'
 
 import { HttpModule } from '@nestjs/axios'
-import { MovieApiService } from 'src/infra/api/movie.api'
+import { MovieApiService } from '../../infra/api/movie.api'
 import { MovieService } from './movies.service'
 import { MoviesController } from './movies.controller'
-import { RepositoryModule } from 'src/infra/data/repository.module'
+import { RepositoryModule } from '../../infra/data/repository.module'
 
 Global()
 @Module({
