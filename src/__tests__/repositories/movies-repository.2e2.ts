@@ -7,7 +7,7 @@ import { MongooseModule } from '@nestjs/mongoose'
 import { MovieApiService } from '../../infra/api/movie.api'
 import { MovieService } from '../../app/movies/movies.service'
 import { MoviesController } from '../../app/movies/movies.controller'
-import { RepositoryModule } from '../..//infra/data/repository.module'
+import { RepositoryModule } from '../../infra/data/repository.module'
 import mongoose from 'mongoose'
 
 describe('Movies end to end', () => {
