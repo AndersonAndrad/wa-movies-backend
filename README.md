@@ -6,7 +6,7 @@
 
 - [Nodejs](https://nodejs.org/en/download/) (v16.17 or LTS)
 - Npm (8.15)
-- MongoDB (6.0 or LTS)(how insatll container)
+- MongoDB (6.0 or LTS)( [how insatll container](#How-install-mongo-docker) )
 
 ---
 
@@ -53,7 +53,7 @@ json-server --watch movies.mock.json --port 3001
 ## How install mongo docker
 
 ```
-docker run --name database name -p 27017:27017 -d -t mongo
+docker run --name databasename -p 27017:27017 -d -t mongo
 ```
 
-This container don't have password to connect to password
+This container don't have password to connect to database
