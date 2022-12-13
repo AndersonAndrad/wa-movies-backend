@@ -11,7 +11,7 @@ export class MoviesController {
   constructor(private movieService: MovieService) {}
 
   @Get()
-  @ApiOperation({ summary: 'endpoint description' })
+  @ApiOperation({ summary: 'Search all movies according to the filter' })
   search(@Query() filterMovie: SearchMovieDTO) {
     return this.movieService.getMovies(filterMovie)
   }
@@ -23,13 +23,13 @@ export class MoviesController {
   }
 
   @Get('/:movieId')
-  @ApiOperation({ summary: 'endpoint description' })
+  @ApiOperation({ summary: 'Search movie with ID movie' })
   getMovie(@Param('movieId') movieId: string) {
     return this.movieService.getMovie(movieId)
   }
 
   @Post()
-  @ApiOperation({ summary: 'endpoint description' })
+  @ApiOperation({ summary: 'Create a movie' })
   create(@Body() movie: MovieDTO) {
     return this.movieService.create(movie)
   }
