@@ -10,11 +10,11 @@ export class SearchMovieDTO implements IFilterMovie {
   pageSize: number
 
   @ApiPropertyOptional()
-  title: string
+  title?: string
 
   @ApiPropertyOptional()
-  director: string
+  director?: string
 
   @ApiPropertyOptional()
-  producer: string
+  producer?: string
 }
