@@ -1,4 +1,4 @@
-# wa-movies-frontend - Documentation
+# wa-movies-Backend - Documentation
 
 ## Get start
 
@@ -33,7 +33,7 @@ npm install
 ## Fourth - Run project
 
 ```
-npm run dev
+npm start
 ```
 
 **OBS** If you want, you can use mock server with this tutorial...
